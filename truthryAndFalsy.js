@@ -31,3 +31,16 @@ console.log(!['array?']);
 console.log(![]);
 console.log(!{value :1});
 
+//truthy 값
+// 1, ' ', [], {}
+console.log(!!1);
+console.log(!!' ');
+console.log(!![]);
+console.log(!!{});
+console.log(!{value:1});
+
+console.log('------------------');
+const value = { a:1 };
+const truthy = value ? true : false;
+console.log('truthy? ' + truthy);
+console.log('!truthy? ' + !truthy);
