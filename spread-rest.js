@@ -48,3 +48,29 @@ console.log(color, rest);
 const number2 = [1, 2, 3, 4, 5];
 const [first, ...rest2] = number2;  // rest는 최선단에 살 수 없다.
 console.log(first, rest2);
+
+// 함수 파라미터에서의 rest
+function sum( ...rest) {
+    return rest.reduce((a, b) => a + b);
+}
+console.log(sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+
+// 함수 인자와 spread
+
+const number3 = [1, 2, 3, 4, 5];
+const result = sum(
+    ...number3
+);
+
+console.log(result);
+
+
+// quiz
+// 함수 n 개와 숫자들이 파라미터로 주어졌을 때 가장 큰 값을 찾는 코드
+function max(...rest) {
+    return rest.reduce((acc, current) => acc > current ? acc : current);
+}
+
+const resultQuiz  = max(1,2,3,4,5,6,7,8,9,10);
+console.log(resultQuiz);
+
