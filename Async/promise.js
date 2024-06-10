@@ -31,10 +31,10 @@ function getResult(user) {
 
 function registerByPromise(user){
     // 비동기 호출이지만 순서를 지켜서 실행
-    const result = saveDB(user).then(sendEmail).then(getResult);
+    const result = saveDB(user).then(sendEmail).then(getResult); 
     console.log(result);
     return result;
 }
 
 const myUser = {email:"testuser@naver.com", password : '1234',name:"testuser"};
-registerByPromise(myUser)
+registerByPromise(myUser) 
