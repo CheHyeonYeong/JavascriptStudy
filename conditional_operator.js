@@ -13,3 +13,10 @@ let text = array.length === 0 ? "empty" : "not empty";
 
 console.log(text);
 
+// 삼항 연산자 중첩 사용 예시
+
+const condition1 = false;
+const condition2 = false;
+
+const value = condition1 ? '와우!!!' : condition2 ? '안녕!!!' : '초';
+console.log(value);
