@@ -39,3 +39,12 @@ const animals2 = [...animals, 'tiger'];
 console.log(animals2);
 
 // 2. rest
+// 사용 방식은 비슷해 보이지만, 역할이 매우 다르낟.
+// 객체 배열 그리고 함수의 파라미터에서 사용이 가능
+const {color, ...rest } = purpleCuteSlime;
+console.log(color, rest);
+
+// 배열의 rest
+const number2 = [1, 2, 3, 4, 5];
+const [first, ...rest2] = number2;  // rest는 최선단에 살 수 없다.
+console.log(first, rest2);
