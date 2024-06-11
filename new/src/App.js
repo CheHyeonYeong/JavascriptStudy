@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import Wrapper from './Wrapper';
+import PropTypes from 'prop-types';   // props 타입 검증을 위한 모듈,....
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
   return (
     <> {/* 이것은 fragment이다. */}
     <Wrapper>
-    <MyComponent name={name} age={10} addr="Seoul" email="test@naver"/>
+    <MyComponent name={name} age={10} addr="Seoul" email="test@naver" isSpecial/>
     <div style={style}>
       <WelcomeFunction name="Sara"/>
       <WelcomeFunction name={name}/> {/* jsx 코드를 표현 => js 코드가 아니다! */}
@@ -44,16 +45,19 @@ class WelcomeClass extends React.Component {
 }
 
 // 화살표 함수를 이용한 컴포넌트
-const MyComponent = ({name, age, addr, email}) => {
+const MyComponent = ({name, age, addr, email, isSpecial}) => {
+
   return (
-    <div>
-      <p>
-        나의 첫 번째 MyComponent 입니다. <br/>
-        프로퍼티 1 : {name}<br/>
-        프로퍼티 2 : {age} <br/>
-        기본값 프로퍼티 3 : {addr} <br/>
-      </p>
-    </div>
+    <>
+      { isSpecial && 
+      <div>
+        나의 첫 번째 MyComponent 입니다. <br />
+        프로퍼티 1 : {name}<br />
+        프로퍼티 2 : {age}<br />
+        기본값 프로퍼티 3 : {addr}<br />
+      </div>
+      }
+    </>
   );
 }
 
@@ -65,5 +69,16 @@ MyComponent.defaultProps = {
   age: 10,
   addr: 'Seoul'
 }
+
+// props 타입 검증 주의사항 : 대소문자를 정확하게 구분함
+// npm install prop-types
+// 컴포넌트명.propsType = { };
+// PropType이 기대하는 값을 가지는지 여부를 확인!
+MyComponent.propsType = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+  email: PropTypes.string.isRequired    // 필수값
+}
+
 
 export default App;
