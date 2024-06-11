@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import Wrapper from './Wrapper';
 
 function App() {
 
@@ -17,17 +18,15 @@ function App() {
 
   return (
     <> {/* 이것은 fragment이다. */}
-
+    <Wrapper>
     <MyComponent name={name} age={10} addr="Seoul" email="test@naver"/>
     <div style={style}>
       <WelcomeFunction name="Sara"/>
-      <WelcomeClass name="Cahal"/>
-      <WelcomeFunction name="Edite"/>
-
       <WelcomeFunction name={name}/> {/* jsx 코드를 표현 => js 코드가 아니다! */}
     </div>
 
     <div className='test-box'>Hello World!!</div> {/* 하나의 태그로 묶여야 한다 */}
+    </Wrapper>
     </>
   );
 }
@@ -58,5 +57,13 @@ const MyComponent = ({name, age, addr, email}) => {
   );
 }
 
+// props 기본값 설정하기.. 중요 * 대소문자를 구분함
+// 컴포넌트에 props를 지정하지 않았을 때 기본적으로 사용할 값을 설장하는 경우에 사용함.
+// syntax : 컴포넌트.defaultProps = {};
+
+MyComponent.defaultProps = {
+  age: 10,
+  addr: 'Seoul'
+}
 
 export default App;
