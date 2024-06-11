@@ -17,12 +17,14 @@ function App() {
 
   return (
     <> {/* 이것은 fragment이다. */}
+
+    <MyComponent name={name} age={10} addr="Seoul" email="test@naver"/>
     <div style={style}>
       <WelcomeFunction name="Sara"/>
       <WelcomeClass name="Cahal"/>
       <WelcomeFunction name="Edite"/>
 
-      <WelcomeFunction name={name}/> {/* js 코드를 표현 */}
+      <WelcomeFunction name={name}/> {/* jsx 코드를 표현 => js 코드가 아니다! */}
     </div>
 
     <div className='test-box'>Hello World!!</div> {/* 하나의 태그로 묶여야 한다 */}
@@ -41,5 +43,20 @@ class WelcomeClass extends React.Component {
     return <h1>Hello, {this.props.name}</h1>;
   }
 }
+
+// 화살표 함수를 이용한 컴포넌트
+const MyComponent = ({name, age, addr, email}) => {
+  return (
+    <div>
+      <p>
+        나의 첫 번째 MyComponent 입니다. <br/>
+        프로퍼티 1 : {name}<br/>
+        프로퍼티 2 : {age} <br/>
+        기본값 프로퍼티 3 : {addr} <br/>
+      </p>
+    </div>
+  );
+}
+
 
 export default App;
