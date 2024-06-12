@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';   // props 타입 검증을 위한 모듈,..
 import StateComponent from './useState/stateTest';
 import MyComponent2 from './useState/MyComponent2';
 import EventComponent from './event/EventComponent';
+import EventComponent2 from './event/EventComponent2';
+import InputSample from './event/InputSample';
 
 function App() {
 
@@ -25,7 +27,12 @@ function App() {
     <EventComponent />
     <MyComponent2  name = {'홍길동'} age = {20} /> 
     <StateComponent/>
-
+    <hr />
+    {/* 2nd Day : event */}
+    <EventComponent />
+    <EventComponent2 />
+    <InputSample />
+      
     <Wrapper>
     <MyComponent name={name} age={10} addr="Seoul" email="test@naver" isSpecial/>
     <div style={style}>
