@@ -4,7 +4,8 @@ import React from 'react';
 import Wrapper from './Wrapper';
 import PropTypes from 'prop-types';   // props 타입 검증을 위한 모듈,....
 import StateComponent from './useState/stateTest';
-import Counter from './useState/Counter';
+import MyComponent2 from './useState/MyComponent2';
+import EventComponent from './event/EventComponent';
 
 function App() {
 
@@ -21,8 +22,9 @@ function App() {
 
   return (
     <> {/* 이것은 fragment이다. */}
-    <StateComponent />
-    <Counter />
+    <EventComponent />
+    <MyComponent2  name = {'홍길동'} age = {20} /> 
+    <StateComponent/>
 
     <Wrapper>
     <MyComponent name={name} age={10} addr="Seoul" email="test@naver" isSpecial/>
