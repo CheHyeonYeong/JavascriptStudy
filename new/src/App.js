@@ -8,6 +8,7 @@ import MyComponent2 from './useState/MyComponent2';
 import EventComponent from './event/EventComponent';
 import EventComponent2 from './event/EventComponent2';
 import InputSample from './event/InputSample';
+import UserList from './array/userList';
 
 function App() {
 
@@ -32,6 +33,11 @@ function App() {
     <EventComponent />
     <EventComponent2 />
     <InputSample />
+    <hr />
+    
+    {/* 2nd Day : 컴포넌트 배열 */}
+    <UserList />
+
       
     <Wrapper>
     <MyComponent name={name} age={10} addr="Seoul" email="test@naver" isSpecial/>
