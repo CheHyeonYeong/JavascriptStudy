@@ -3,7 +3,8 @@ import './App.css';
 import React from 'react';
 import Wrapper from './Wrapper';
 import PropTypes from 'prop-types';   // props 타입 검증을 위한 모듈,....
-import StateComponent from './stateTest';
+import StateComponent from './useState/stateTest';
+import Counter from './useState/Counter';
 
 function App() {
 
@@ -20,7 +21,9 @@ function App() {
 
   return (
     <> {/* 이것은 fragment이다. */}
-    <StateComponent></StateComponent>
+    <StateComponent />
+    <Counter />
+
     <Wrapper>
     <MyComponent name={name} age={10} addr="Seoul" email="test@naver" isSpecial/>
     <div style={style}>
