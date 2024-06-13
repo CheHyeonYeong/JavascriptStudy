@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // User 컴포넌트
 function User({user, onRemove, onToggle}) {
+    useEffect(() => {
+        console.log('컴포넌트가 마운트되었습니다.', user.id);
+        return () => {
+            console.log('컴포넌트가 화면에서 사라짐')
+        };
+    },[])
+
     return (
       <div>
           <b onClick={() => onToggle(user.id)}
