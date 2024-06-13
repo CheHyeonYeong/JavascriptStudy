@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import Wrapper from './Wrapper';
 import PropTypes from 'prop-types';   // props 타입 검증을 위한 모듈,....
 import StateComponent from './useState/stateTest';
@@ -9,6 +9,9 @@ import EventComponent from './event/EventComponent';
 import EventComponent2 from './event/EventComponent2';
 import InputSample from './event/InputSample';
 import UserList from './array/userList';
+import InputSample2 from './array/InputSample2';
+import CreateUser from './array/CreateUser';
+import ArrayKey from './array/ArrayKey';
 
 function App() {
 
@@ -22,32 +25,118 @@ function App() {
     padding: 15
   };
   
+    // users 배열객체를 useState로 변경... 
+    const [users, setUsers] = useState([
+      {
+        id: 1,
+        username: '홍길동',
+        email: 'hong@naver.com',
+        active: true
+      },
+      {
+        id: 2,
+        username: '이순신',
+        email: 'leeSS@naver.com',
+        active: false
+      },
+      {
+        id: 3,
+        username: '유관순',
+        email: 'Youks@naver.com',
+        active: false
+      }
+    ]);
+
+      // useState 입력값 처리를 위해서... 
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: ''
+  });
+  const {username, email} = inputs;
+
+  const onChange = e => {
+    const {name, value} = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value
+    });
+  }
+
+  // useRef를 이용한 컴포넌트에서 사용할 변수 지정
+  // - useRef로 관리하는 변수는 값이 바뀐다고해서 컴포넌트가 리렌더링되지 않음
+  // - 때문에 useRef로 관리하고 있는 변수는 설정 후 바로 조회 가능함. 
+  // - setTimeout, setInterval 을 통해서 만들어진 id
+  // - 외부 라이브러리를 사용하여 생성된 인스턴스
+  // - scroll 위치
+  const nextId = useRef(4);  
+  const onCreate = () => {
+    // 나중에 구현 할 배열에 항목 추가 로직... 
+    const user = {
+      id: nextId.current,  //현재 useRef로 설정된 값을 호출
+      username,
+      email
+    };
+    // 추가
+    setUsers([...users,user]);
+
+    // 입력값 정리
+    setInputs({
+      username: '',
+      email: ''
+    });
+
+    nextId.current += 1;   // onCreate가 동작하면, useRef에 현재값에 +1 처리
+  }
+
+  // 사용자 삭제
+  const onRemove = id => {
+    // user.id가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열 만듦
+    // user.id가 파라미터로 전달된 id인 것만 제거한 새로운 배열 생성
+    // filter를 사용하여 구현 -> true인 애들만 제거한다.
+    setUsers(users.filter(user => user.id !== id));
+  }
+
+  const onToggle = id => {
+    setUsers(users.map(user => 
+      user.id === id ? { ...user, active: !user.active } : user
+    ));
+  }
 
   return (
     <> {/* 이것은 fragment이다. */}
-    <EventComponent />
+    {/* <EventComponent />
     <MyComponent2  name = {'홍길동'} age = {20} /> 
-    <StateComponent/>
+    <StateComponent/> */}
     <hr />
     {/* 2nd Day : event */}
-    <EventComponent />
+    {/* <EventComponent />
     <EventComponent2 />
-    <InputSample />
+    <InputSample /> */}
     <hr />
     
     {/* 2nd Day : 컴포넌트 배열 */}
-    <UserList />
+    {/* <ArrayKey /> */}
+    {/* <InputSample2 /> */}
 
-      
-    <Wrapper>
-    <MyComponent name={name} age={10} addr="Seoul" email="test@naver" isSpecial/>
-    <div style={style}>
-      <WelcomeFunction name="Sara"/>
-      <WelcomeFunction name={name}/> {/* jsx 코드를 표현 => js 코드가 아니다! */}
-    </div>
+    <hr/>
 
-    <div className='test-box'>Hello World!!</div> {/* 하나의 태그로 묶여야 한다 */}
-    </Wrapper>
+    <CreateUser
+      username={username}
+      email={email}
+      onChange={onChange}
+      onCreate={onCreate} />
+    <hr />
+    <UserList users={users} onRemove={onRemove} onToggle={onToggle} /> {/* 등록사용자 출력 */}
+
+    {/* <Wrapper> */}
+    {/* <MyComponent name={name} age={10} addr="Seoul" email="test@naver" isSpecial/> */}
+    {/* <div style={style}> */}
+      {/* <WelcomeFunction name="Sara"/> */}
+      {/* <WelcomeFunction name={name}/>  */} {/* jsx 코드를 표현 => js 코드가 아니다! */}
+    {/* </div>++++ */}
+
+    {/* <div className='test-box'>Hello World!!</div>  */} {/* 하나의 태그로 묶여야 한다 */}
+    {/* </Wrapper> */}
     </>
   );
 }
