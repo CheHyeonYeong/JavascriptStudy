@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Circle = styled.div`
     width: 5rem;
     height: 5rem;
-    background-color: black;
+    background-color: ${props => props.color || 'blue'};
     border-radius: 50%;
 `;
 

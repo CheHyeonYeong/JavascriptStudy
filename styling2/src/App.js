@@ -8,6 +8,8 @@ function App() {
   return (
     <div className="App">
       <Circle />
+      <Circle color='pink'/>
+      <Circle color='aqua'/>
 
     </div>
   );
