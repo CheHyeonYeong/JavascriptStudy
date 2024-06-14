@@ -2,8 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import Count from './Hook/Count';
 import UserList from './Hook/userList';
-import { useCallback, useReducer, useRef, useState, useEffect } from 'react';
+import { useCallback, useReducer, useRef, useMemo, useState, useEffect } from 'react';
 import CreateUser from './Hook/CreateUser';
+import useInputs from './Hook/useImputs';
+import styled from './css/App.module.css';
 
 function countActiveUsers(users) {
   console.log('활성 사용자 수를 세는 중....');
@@ -11,10 +13,7 @@ function countActiveUsers(users) {
 }
 
 const initialState = {
-  inputs :{
-    username: '',
-    email: '',
-  },
+  // custom hook 작업을 제외 하여 inputs를 삭제한다.
   users: [
     {
       id: 1,
@@ -40,15 +39,7 @@ const initialState = {
 
 function reducer(state , action) {
   switch(action.type) {
-    case 'CHANGE_INPUT':
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.name]: action.value
-        }
-      }
-
+    // custom hook 작업을 제외 -> change input은 useInputs에 구현되어 있기 때문이다.
     case 'CREATE_USER':
       return {
         inputs: initialState.inputs,
@@ -75,14 +66,15 @@ function reducer(state , action) {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const {users} = state;  // 비구조화 할당
-  const {username, email} = state.inputs;
+  // custom hooks 구현으로 다음을 바꿔서 사용
+  // const {username, email} = state.inputs;
+  const [{username, email}, onChange, reset] = useInputs({
+    username: '',
+    email: ''
+  });
   const nextId = useRef(4);
 
-  const onChange = useCallback ((e) => {
-    const {name, value} = e.target;
-    dispatch({type: 'CHANGE_INPUT', name, value});
-    
-  }, []);
+  const count = useMemo(() => countActiveUsers(users), [users]);
 
   const onCreate = useCallback (() => {
     dispatch(
@@ -93,8 +85,9 @@ function App() {
       email
     }
     });
+    reset();
     nextId.current += 1;
-  }, [username, email]);
+  }, [username, email, reset]);
 
   const onToggle = useCallback ((id) => {
     dispatch({type: 'TOGGLE_USER', id});
@@ -106,12 +99,18 @@ function App() {
 
   return (
     <div className="App">
+      <section className={styled.app_wrap}>
+        <p className='title'>모듈 디자인</p>
+
+      </section>
+      <br />
+      <hr />
       <Count />
       <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate}  />
       <UserList users={users} 
       onToggle={onToggle} onRemove={onDelete} />
 
-      <div> 활성 사용자수 : 0</div>
+      <div> 활성 사용자수 : {count}</div>
     </div>
   );
 }
