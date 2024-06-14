@@ -1,0 +1,7 @@
+/* Box.module.css : css module 컴포넌트 단위별 스타일링 중첩 방지 */
+
+.Box {
+    background-color: black;
+    color: white;
+    padding: 2rem;
+}

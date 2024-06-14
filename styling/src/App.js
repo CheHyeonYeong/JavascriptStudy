@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className='button'>
-        <Button size='large'>hello</Button>
+        <Button size='large' onClick={() => alert('hello')}>hello</Button>
         <Button size='medium' color='gray'>hello</Button>
         <Button size='small' color='pink' fullWidth>hello</Button>
       </div>
@@ -15,7 +15,6 @@ function App() {
         <Button size='medium' color='gray' outline>hello</Button>
         <Button size='small' color='pink' outline={true}>hello</Button>
       </div>
-      
     </div>
   );
 }
