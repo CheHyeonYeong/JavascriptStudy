@@ -8,7 +8,7 @@ function App() {
       <div className='button'>
         <Button size='large'>hello</Button>
         <Button size='medium' color='gray'>hello</Button>
-        <Button size='small' color='pink'>hello</Button>
+        <Button size='small' color='pink' fullWidth>hello</Button>
       </div>
       <div className='button'>
         <Button size='large'>hello</Button>
