@@ -54,6 +54,17 @@ function reducer(state , action) {
         inputs: initialState.inputs,
         users: state.users.concat(action.user)
       }
+    case 'TOGGLE_USER':
+      return {
+        ...state,
+        users: state.users.map(user => user.id === action.id ? { ...user, active: !user.active } : user )
+      }
+    case 'REMOVE_USER':
+      return {
+        ...state,
+        // 전달된 값의 id와 같지 않다면 배열에 넣겠다.
+        users: state.users.filter(user => user.id !== action.id)
+      }
     default:
       return state;
   }
@@ -85,11 +96,20 @@ function App() {
     nextId.current += 1;
   }, [username, email]);
 
+  const onToggle = useCallback ((id) => {
+    dispatch({type: 'TOGGLE_USER', id});
+  }, []);
+
+  const onDelete = useCallback ((id) => {
+    dispatch({type: 'REMOVE_USER', id});
+  }, []);
+
   return (
     <div className="App">
       <Count />
-      <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} />
-      <UserList users={users} />
+      <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate}  />
+      <UserList users={users} 
+      onToggle={onToggle} onRemove={onDelete} />
 
       <div> 활성 사용자수 : 0</div>
     </div>

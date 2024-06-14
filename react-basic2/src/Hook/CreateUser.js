@@ -2,7 +2,7 @@ import React from "react";
 
 
 // input태그 2개(계정,이메일),버튼(추가 처리... )
-function CreateUser({username, email, onChange, onCreate}) {
+function CreateUser({username, email, onChange, onCreate, onToggle, onDelete}) {
   return(
     <div>
       <input 
