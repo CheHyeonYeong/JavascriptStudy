@@ -2,9 +2,34 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { lighten, darken } from 'polished';
 
+const sizes = {
+  large: {
+    height: '3rem',
+    fontSize: '1.25rem',
+  },
+  medium: {
+    height: '2.5rem',
+    fontSize: '1rem',
+  },
+  small: {
+    height: '2rem',
+    fontSize: '0.875rem',
+  },
+  default: {
+    height: '2.25rem',
+    fontSize: '1rem',
+  },
+};
+
+const sizeStyles = css`
+  ${({ size }) => css`
+    height: ${sizes[size]?.height || sizes.default.height};
+    font-size: ${sizes[size]?.fontSize || sizes.default.fontSize};
+  `}
+`;
+
 const colorStyle = css`
-    /* Color */
-    ${({ theme, color }) => {
+  ${({ theme, color }) => {
     const colors = theme.colors || {
       blue: '#228be6',
       gray: '#868e96',
@@ -23,37 +48,81 @@ const colorStyle = css`
   }}
 `;
 
+const outlineStyle = css`
+  ${({ theme, color, outline }) => {
+    if (outline) {
+      const colors = theme.colors || {
+        blue: '#228be6',
+        gray: '#868e96',
+        pink: '#f06595',
+      };
+      const selectedColor = colors[color] || 'aqua';
+      return css`
+        color: ${selectedColor};
+        background: none;
+        border: 1px solid ${selectedColor};
+        &:hover {
+          background: ${selectedColor};
+          color: white;
+        }
+      `;
+    }
+  }}
+`;
+const fullWidthStyle = css`
+  ${({ fullWidth }) => {
+    if (fullWidth) {
+      return css`
+        width: 100%;
+        justify-content: center;
+        & + & {
+          margin-top: 1rem;
+        }
+      `;
+    }
+    else {
+      return css`
+        & + & {
+          margin-left: 1rem;
+        }
+      `;
+    }
+  }}
+`;
+
+
 const StyledButton = styled.button`
   /* Common styles */
   display: inline-flex;
   align-items: center;
-  outline: none;
   border: none;
   border-radius: 4px;
-  color: white;
   font-weight: bold;
   cursor: pointer;
   padding-left: 1rem;
   padding-right: 1rem;
 
-  /* Size */
-  height: 2.25rem;
-  font-size: 1rem;
+  ${sizeStyles}
+  ${colorStyle}
+  ${outlineStyle}
+  ${fullWidthStyle}
 
-  ${colorStyle};
-  /* Other */
-  & + & {
-    margin-left: 1rem;
-  }
 `;
 
-function Button({ children, color, ...rest }) {
-  return <StyledButton color={color} {...rest}>{children}</StyledButton>;
+function Button({ children, outline, fullWidth, size, color, ...rest }) {
+  return (
+    <StyledButton outline={outline} fullWidth={fullWidth} color={color} size={size} {...rest}>
+      {children}
+    </StyledButton>
+  );
 }
 
 // Default props
 Button.defaultProps = {
-  color: "blue"
+  color: "blue",
+  size: "medium",
+  outline: false,
+  fullWidth: false,
 };
 
 export default Button;

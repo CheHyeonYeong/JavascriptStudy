@@ -13,6 +13,12 @@ const AppBlock = styled.div`
   padding: 1rem;
 `;
 
+const ButtonGroup = styled.div`
+  & + & {
+    margin-top: 1rem;
+  }
+`;
+
 function App() {
 
   return (
@@ -29,13 +35,34 @@ function App() {
       <Circle color='pink'/>
       <Circle color='aqua'/> */}
       <AppBlock>  {/* 자식 컴포넌트를 둘러싸고 있는 div 컴포넌트 */}
-        <Button color ='pink'>Button</Button>
-        <Button color ='gray'>Button</Button>
-        <Button color ='blue'>Button</Button>
-        <Button>Button</Button>
+        <ButtonGroup>
+          <Button color ='pink' size='large'>Button</Button>
+          <Button color ='gray' size='medium'>Button</Button>
+          <Button color ='blue' size='small'>Button</Button>  
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button color ='pink' size='large'>Button</Button>
+          <Button color ='gray' size='medium'>Button</Button>
+          <Button color ='blue' size='small'>Button</Button>  
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button outline color ='pink' size='large'>Button</Button>
+          <Button color ='gray' size='medium'>Button</Button>
+          <Button color ='blue' size='small'>Button</Button>  
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button fullWidth color ='pink' size='large'>Button</Button>
+          <Button fullWidth color ='gray' size='medium'>Button</Button>
+          <Button fullWidth color ='blue' size='small'>Button</Button>  
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button>Button</Button>
+        </ButtonGroup>
+        
       </AppBlock>
     </ThemeProvider>
   );
 }
 
 export default App;
+
