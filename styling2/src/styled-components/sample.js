@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import {lighten, darken} from 'polished';
 
 const Circle = styled.div`
     width: 5rem;

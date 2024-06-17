@@ -16,7 +16,7 @@ const AppBlock = styled.div`
 function App() {
 
   return (
-    <ThemeProvider 
+    <ThemeProvider // 웹 사이트 디자인 시에 메인 색상을 지정
       theme={{
         palette: {
           blue: '#228be6',
@@ -29,9 +29,11 @@ function App() {
       <Circle color='pink'/>
       <Circle color='aqua'/> */}
       <AppBlock>  {/* 자식 컴포넌트를 둘러싸고 있는 div 컴포넌트 */}
+        <Button color ='pink'>Button</Button>
+        <Button color ='gray'>Button</Button>
+        <Button color ='blue'>Button</Button>
         <Button>Button</Button>
       </AppBlock>
-    
     </ThemeProvider>
   );
 }
