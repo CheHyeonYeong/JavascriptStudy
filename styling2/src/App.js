@@ -82,7 +82,9 @@ function App() {
         <ButtonGroup>
           <Button>Button</Button>
         </ButtonGroup>
-        
+        <ButtonGroup>
+          <Button>Button</Button>
+        </ButtonGroup>
       </AppBlock>
     </ThemeProvider>
   );
