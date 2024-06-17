@@ -21,6 +21,21 @@ const ButtonGroup = styled.div`
 `;
 
 function App() {
+  const [dialog, setDialog] = useState(false);
+
+  const onClick = () => {
+    setDialog(true);
+  };
+
+  const onConfirm = () => {
+    console.log('확인');
+    setDialog(false);
+  };
+
+  const onCancel = () => {
+    console.log('취소');
+    setDialog(false);
+  };
 
   return (
     <ThemeProvider // 웹 사이트 디자인 시에 메인 색상을 지정
@@ -32,7 +47,14 @@ function App() {
         }
       }}
     >
-      <Dialog title="제목" confirmText="삭제" cancelText="취소">데이터를 정말로 삭제하겠습니까?</Dialog>
+      <Dialog        
+          title="정말로 삭제하겠습니까?"
+          confirmText='삭제'
+          cancelText='취소'
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+          visible={dialog}
+        />
       {/* <Circle />
       <Circle color='pink'/>
       <Circle color='aqua'/> */}
@@ -50,10 +72,10 @@ function App() {
         <ButtonGroup>
           <Button outline color ='pink' size='large'>Button</Button>
           <Button color ='gray' size='medium'>Button</Button>
-          <Button color ='blue' size='small'>Button</Button>  
+          <Button color ='blue' size='small'>Button</Button>        
         </ButtonGroup>
         <ButtonGroup>
-          <Button fullWidth outline color ='pink' size='large'>Button</Button>
+          <Button color='pink' fullWidth onClick={onClick}>삭제</Button>
           <Button fullWidth color ='gray' size='medium'>Button</Button>
           <Button fullWidth color ='blue' size='small'>Button</Button>  
         </ButtonGroup>
