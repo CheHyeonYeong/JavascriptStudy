@@ -22,10 +22,13 @@ const sizes = {
 };
 
 const sizeStyles = css`
-  ${({ size }) => css`
-    height: ${sizes[size]?.height || sizes.default.height};
-    font-size: ${sizes[size]?.fontSize || sizes.default.fontSize};
-  `}
+  ${({ size }) => {
+    const { height, fontSize } = sizes[size] || sizes.default;
+    return css`
+      height: ${height};
+      font-size: ${fontSize};
+    `;
+  }}
 `;
 
 const colorStyle = css`
@@ -69,27 +72,18 @@ const outlineStyle = css`
     }
   }}
 `;
-const fullWidthStyle = css`
-  ${({ fullWidth }) => {
-    if (fullWidth) {
-      return css`
-        width: 100%;
-        justify-content: center;
-        & + & {
-          margin-top: 1rem;
-        }
-      `;
-    }
-    else {
-      return css`
-        & + & {
-          margin-left: 1rem;
-        }
-      `;
-    }
-  }}
-`;
 
+const fullWidthStyle = css`
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+      justify-content: center;
+      & + & {
+        margin-top: 1rem;
+      }
+    `}
+`;
 
 const StyledButton = styled.button`
   /* Common styles */
@@ -106,6 +100,7 @@ const StyledButton = styled.button`
   ${colorStyle}
   ${outlineStyle}
   ${fullWidthStyle}
+
 
 `;
 

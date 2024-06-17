@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Circle from './styled-components/sample';
 import Button from './styled-components/Button';
 import styled, { ThemeProvider } from 'styled-components';
+import Dialog from './styled-components/Dialog';
 
 const AppBlock = styled.div`
   width: 512px;
@@ -31,6 +32,7 @@ function App() {
         }
       }}
     >
+      <Dialog title="제목" confirmText="삭제" cancelText="취소">데이터를 정말로 삭제하겠습니까?</Dialog>
       {/* <Circle />
       <Circle color='pink'/>
       <Circle color='aqua'/> */}
@@ -51,7 +53,7 @@ function App() {
           <Button color ='blue' size='small'>Button</Button>  
         </ButtonGroup>
         <ButtonGroup>
-          <Button fullWidth color ='pink' size='large'>Button</Button>
+          <Button fullWidth outline color ='pink' size='large'>Button</Button>
           <Button fullWidth color ='gray' size='medium'>Button</Button>
           <Button fullWidth color ='blue' size='small'>Button</Button>  
         </ButtonGroup>
