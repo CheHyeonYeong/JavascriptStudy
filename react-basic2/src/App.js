@@ -79,7 +79,7 @@ function App() {
   const onCreate = useCallback (() => {
     dispatch(
       {type: 'CREATE_USER',
-      user : {
+      user : { 
       id : nextId.current,
       username,
       email
@@ -99,10 +99,7 @@ function App() {
 
   return (
     <div className="App">
-      <section className={styled.app_wrap}>
-        <p className='title'>모듈 디자인</p>
 
-      </section>
       <br />
       <hr />
       <Count />
