@@ -33,15 +33,15 @@ function App() {
   // 화면 렌더링 완료시 데이터 처리를 위해서 사용
   // 이 때 비동기 작업을 컴포넌트에서 바로 쓰고 state를 변경하면 무한루프에 빠짐.
   // useEffect() 훅을 이용해서 첫 번째 렌더링 완료 시에만 데이터를 가져오게 처리
-  // useEffect(() => {
-  //   fetch('https://raw.githubusercontent.com/yopy0817/data_example/master/hi.json')  
-  //   .then((res) => res.json())   
-  //   .then((res) => { // json 처리 이후의 데이터
-  //     setRaw(res);
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   });
-  // })  
+  useEffect(() => {
+    fetch('https://raw.githubusercontent.com/yopy0817/data_example/master/hi.json')  
+    .then((res) => res.json())   
+    .then((res) => { // json 처리 이후의 데이터
+      setRaw(res);
+    }).catch((err) => {
+      console.log(err);
+    });
+  })  
 
   // 3. async(비동기를 알림), await(순차적으로) 적용
   // async, await 규칙
@@ -49,7 +49,9 @@ function App() {
   // 2. function 앞에 async 키워드를 추가. 함수는 언제나 promise로 반환
   // 3. 리턴이 프로미스라면 await 적용하고 then을 없앨 수 있음
 
-  const handleClick =async () => { // 싱글스레드
+  const handleClick =async () => { // await : 싱글스레드 => 순서가 보장되지 않는다.
+    // async => 순서가 보장된다
+
     let response = await axios.get('https://raw.githubusercontent.com/yopy0817/data_example/master/hi.json')
 
     console.log(response.data);
