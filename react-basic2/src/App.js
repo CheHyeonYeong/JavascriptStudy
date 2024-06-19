@@ -2,12 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import Count from './Hook/Count';
 import UserList from './Hook/userList';
-import { useCallback, useReducer, useRef, useMemo, useState, useEffect } from 'react';
+import React, { useCallback, useReducer, useRef, useMemo, useState, useEffect } from 'react';
 import CreateUser from './Hook/CreateUser';
 import useInputs from './Hook/useImputs';
 import styled from './css/App.module.css';
 
-function countActiveUsers(users) {
+function countActiveUsers(users) {``
   console.log('활성 사용자 수를 세는 중....');
   return users.filter(user => user.active).length;
 }
@@ -108,8 +108,13 @@ function App() {
       onToggle={onToggle} onRemove={onDelete} />
 
       <div> 활성 사용자수 : {count}</div>
+      <div> 활성 사용자수 : {count}</div>
     </div>
   );
 }
 
+// 24.06.17 
+// 1. UserDispatch 라는 이름으로 Context를 내보내기
+export const UserDispatch = React.createContext(null);
+// 내보낸 것을 사용하고 싶은 경우... import { UserDispatch } from './App';
 export default App;
