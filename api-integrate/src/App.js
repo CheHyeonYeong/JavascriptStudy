@@ -3,7 +3,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react'; 
 import axios from 'axios';
 import Posts from './component/PostList';
-
+import { PostsProvider } from './component/PostsContext';
 function App() {
   // axios를 이용한 통신 테스트
   
@@ -75,10 +75,10 @@ function App() {
 
   return (
     <div>
-      <div>
+      <PostsProvider>
         <h1>post component</h1>
         <Posts />
-      </div>
+      </PostsProvider>
 
       <h3> 클릭시 fetch로 데이터 가져오기</h3>
       <button type='button' onClick={handleClick}>
