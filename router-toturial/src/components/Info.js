@@ -7,7 +7,6 @@ function Info() {
 
     return (
         <div>
-
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/user">회원 페이지</Link></li>

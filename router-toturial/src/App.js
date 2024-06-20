@@ -11,6 +11,7 @@ function App() {
       <Route path='/' Component={Home} /> 
       <Route path='/' element={<Home />} /> 
       <Route path='/user' element={<User />} />
+      <Route path='/user/:id' element={<User />} />
       <Route path='/info' element={<Info />} />
       <Route path='/info/:num' element={<Info />} />
     </Routes>

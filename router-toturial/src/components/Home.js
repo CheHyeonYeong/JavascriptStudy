@@ -22,6 +22,13 @@ function Home() {
                 <li><Link to="/info/2"> 2번 info </Link></li>
                 <li><Link to="/info/3"> 3번 info </Link></li>
             </ul>
+            <hr />
+            <ul>
+                <li><Link to="/user/testuser"> 1번 user </Link></li>
+                <li><Link to="/user/testuser2"> 2번 user </Link></li>
+                <li><Link to="/user/testuser3"> 3번 user </Link></li>
+                <li><Link to="/user/4"> 4번 user </Link></li>
+            </ul>
             <h1>Home</h1>
         </div>
     );
