@@ -1,24 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home';
+import { Route, Router, Routes } from 'react-router-dom';
+import Board from './components/Board';
+import BoardContent from './components/BoardContent';
+import MyPage from './components/MyPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+    {/* 링크들 모음 */}
+      <Route path='/' Component={Home} /> 
+
+      <Route path='/board' element={<Board />}>
+        <Route path=':num' element={<BoardContent />} />
+      </Route>
+      <Route path='/mypage' Component={MyPage} /> 
+
+    </Routes>
   );
 }
 
