@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Outlet, Route, Routes, useParams } from "react-router-dom";
 import User from "./User";
 
-
 function Profiles() {
     return (
         <div>
