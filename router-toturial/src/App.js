@@ -8,9 +8,11 @@ import Info from './components/Info';
 function App() {
   return (
     <Routes>
-       <Route path='/' element={<Home />} /> 
+      <Route path='/' Component={Home} /> 
+      <Route path='/' element={<Home />} /> 
       <Route path='/user' element={<User />} />
       <Route path='/info' element={<Info />} />
+      <Route path='/info/:num' element={<Info />} />
     </Routes>
   );
 }
