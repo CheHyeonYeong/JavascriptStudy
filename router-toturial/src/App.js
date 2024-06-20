@@ -4,6 +4,8 @@ import { Route, Router, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import User from './components/User';
 import Info from './components/Info';
+import Board from './components/Board';
+import BoardContent from './components/BoardContent';
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
       <Route path='/user/:id' element={<User />} />
       <Route path='/info' element={<Info />} />
       <Route path='/info/:num' element={<Info />} />
+      <Route path='/board' element={<Board />}>
+        <Route path=':num' element={<BoardContent />} />
+      </Route>
     </Routes>
   );
 }
