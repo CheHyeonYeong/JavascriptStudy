@@ -13,7 +13,7 @@
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
-    "outDir": "./dist"
+    "outDir": "./output/"
   },
   "dependencies": {
     "typescript": "^5.5.2"
