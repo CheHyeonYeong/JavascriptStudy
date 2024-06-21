@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Route, Router, Routes } from 'react-router-dom';
+import { Route, Router, Routes, useLocation } from 'react-router-dom';
 import Home from './components/Home';
 import User from './components/User';
 import Info from './components/Info';
@@ -10,8 +10,15 @@ import Profiles from './components/Profiles';
 import Mypage from './components/MypageComponent';
 
 function App() {
+
+  const {pathname} = useLocation();
   return (
     <Routes>
+      <Route path='/*' element={ // switch(version 5)를 사용했을 때 이 경로는 마지막에 작성
+        <div>
+          <p>{pathname} 이 페이지는 존재하지 않습니다</p>
+        </div>
+      } /> 
       <Route path='/' Component={Home} /> 
       <Route path='/' element={<Home />} /> 
       <Route path='/mypage' element={<Mypage />} /> 
