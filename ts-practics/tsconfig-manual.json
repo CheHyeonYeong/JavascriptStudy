@@ -8,13 +8,6 @@
   },
   "author": "",
   "license": "ISC",
-  "compileroptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "outDir": "./output/"
-  },
   "dependencies": {
     "typescript": "^5.5.2"
   }
