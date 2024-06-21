@@ -24,4 +24,30 @@ const wrapped = wrap(10);
 console.log(wrapped);
 const wrapped2 = wrap('hello');
 console.log(wrapped2);
-// const wrapped3 = wrap(<String>[1,2,3]); // error
+const typeItems = {
+    list2: [1, 2, 3]
+};
+class Queue {
+    constructor() {
+        this.list = [];
+    }
+    get length() {
+        return this.list.length;
+    }
+    enqueue(item) {
+        this.list.push(item);
+    }
+    dequeue() {
+        return this.list.shift();
+    }
+}
+const queue = new Queue();
+queue.enqueue(0);
+queue.enqueue(1);
+queue.enqueue(2);
+console.log(queue.length);
+queue.dequeue();
+console.log(queue.length);
+queue.dequeue();
+console.log(queue.length);
+console.log(queue.dequeue());
