@@ -1,7 +1,7 @@
 import React from "react";
 
 // 필요한 타입들 선언
-type Color = "red" | "orange" | "yellow";
+export type Color = "red" | "orange" | "yellow";
 
 // 상태를 위한 타입
 type state = {  // state
@@ -94,3 +94,5 @@ export function useSampleDispatch() {
     }
     return dispatch;
 }
+
+
