@@ -1,7 +1,16 @@
-export default function First(){
+import Navigation from "../components/navigation";
+
+export const metadata = {
+    title: 'home',
+}
+
+
+export default function About(){
     return (
+        <>
         <h1 >
-            about me
+            Hello About!
         </h1>
+        </>
     );
 }

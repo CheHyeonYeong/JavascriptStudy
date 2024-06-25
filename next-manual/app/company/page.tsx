@@ -1,7 +1,11 @@
+import Navigation from "../components/navigation";
+
 export default function company(){
     return (
+        <>
         <h1 >
-            about me
+            Hello company!
         </h1>
+        </>
     );
 }

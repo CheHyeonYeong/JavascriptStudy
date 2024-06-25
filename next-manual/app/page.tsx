@@ -1,7 +1,11 @@
+import Navigation from "./components/navigation"
+
 export default function First(){
     return (
+        <>
         <h1 >
-            Hello World!
+            Hello First!
         </h1>
+        </>
     );
 }

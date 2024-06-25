@@ -1,7 +1,11 @@
+import Navigation from "../components/navigation";
+
 export default function Info(){
     return (
+        <>
         <h1 >
-            Info page
+            info
         </h1>
+        </>
     );
 }
