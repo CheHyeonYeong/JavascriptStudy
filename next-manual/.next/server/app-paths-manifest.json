@@ -1,7 +1,4 @@
 {
-  "/(movies)/movies/[id]/page": "app/(movies)/movies/[id]/page.js",
-  "/page": "app/page.js",
-  "/(movies)/movies/[id]/[title]/page": "app/(movies)/movies/[id]/[title]/page.js",
-  "/company/page": "app/company/page.js",
-  "/company/jobs/sales/page": "app/company/jobs/sales/page.js"
+  "/(albums)/albums/page": "app/(albums)/albums/page.js",
+  "/(albums)/albums-ssr/page": "app/(albums)/albums-ssr/page.js"
 }
