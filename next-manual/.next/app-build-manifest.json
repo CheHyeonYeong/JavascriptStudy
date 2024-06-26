@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/page": [
+    "/(albums)/albums-ssr/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/(albums)/albums-ssr/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -15,15 +15,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/(albums)/albums/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(albums)/albums/page.js"
+      "static/chunks/app/page.js"
     ],
-    "/(albums)/albums-ssr/page": [
+    "/(albums)/albums-ssr/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(albums)/albums-ssr/page.js"
+      "static/chunks/app/(albums)/albums-ssr/loading.js"
     ]
   }
 }

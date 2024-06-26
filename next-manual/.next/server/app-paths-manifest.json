@@ -1,4 +1,4 @@
 {
-  "/(albums)/albums/page": "app/(albums)/albums/page.js",
-  "/(albums)/albums-ssr/page": "app/(albums)/albums-ssr/page.js"
+  "/(albums)/albums-ssr/page": "app/(albums)/albums-ssr/page.js",
+  "/page": "app/page.js"
 }
